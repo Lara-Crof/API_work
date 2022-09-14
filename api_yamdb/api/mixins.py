@@ -1,14 +1,13 @@
-from rest_framework import mixins
-from rest_framework.mixins import (CreateModelMixin, DestroyModelMixin,
-                                   ListModelMixin)
-from rest_framework.viewsets import GenericViewSet
-from rest_framework import  viewsets
+from rest_framework import viewsets, mixins
 
-class ModelMixinSet(CreateModelMixin, ListModelMixin,
-                    DestroyModelMixin, GenericViewSet):
+
+class CreateListDestroyModelViewSet(
+    mixins.CreateModelMixin,
+    mixins.ListModelMixin,
+    mixins.DestroyModelMixin,
+    viewsets.GenericViewSet
+):
+    """
+    Вьюсет, который может создавать, возвращать и удалять список объектов.
+    """
     pass
-
-
-class CreateViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
-    pass
-
